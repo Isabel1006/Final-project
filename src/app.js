@@ -29,3 +29,30 @@ function formatDay(timestamp) {
 
   return days[day];
 }
+
+function cityTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = `${temperature}`;
+
+  let city = response.data.name;
+  let currentCity = document.querySelector("#current-location");
+  currentCity.innerHTML = `${city}`;
+
+  let lowestTemperature = Math.round(response.data.main.temp_min);
+  let minTemperature = document.querySelector(".min-temperature");
+  minTemperature.innerHTML = `↓${lowestTemperature}`;
+
+  let highestTemperature = Math.round(response.data.main.temp_max);
+  let maxTemperature = document.querySelector(".max-temperature");
+  maxTemperature.innerHTML = `↑${highestTemperature}`;
+
+  let thermalSensation = Math.round(response.data.main.feels_like);
+  let feelLike = document.querySelector(".feels-like");
+  feelLike.innerHTML = `Feels like ${thermalSensation}`;
+}
+function searchfunction(city) {
+  let apiKey = "c5f0e59acac64258bb92ed027d20c68f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(cityTemperature);
+}
