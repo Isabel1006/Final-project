@@ -31,6 +31,9 @@ function formatDay(timestamp) {
 }
 
 function cityTemperature(response) {
+  let dayTime = document.querySelector("#time");
+  dayTime.innerHTML = formatDate(response.data.dt * 1000);
+
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#current-temperature");
   currentTemperature.innerHTML = `${temperature}`;
@@ -52,7 +55,14 @@ function cityTemperature(response) {
   feelLike.innerHTML = `Feels like ${thermalSensation}`;
 }
 function searchfunction(city) {
-  let apiKey = "c5f0e59acac64258bb92ed027d20c68f";
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(cityTemperature);
 }
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#city-input");
+  searchfunction(city.value);
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
