@@ -16,113 +16,62 @@
   </head>
   <body>
     <div class="container">
-    <div class="wrapper">
-    <div class="weather-app">
-      <div class="row">
-        <div class="col-4">
-          <div class="icon"><img src="" />🌤</div>
-          <div class="d-flex weather-temperature">
-          <strong id="current-temperature">23°</strong>
-          <span class="unints">C°| F°</span>
-          </div>
-          <ul class="description-temperature">
-            <li class="feels-like">Feels like 23°</li>
-            <li class="max-temperature">↑26°</li>
-            <li class="min-temperature">↓15°</li>
-          </ul>
-        </div>
-        <div class="col-8">
-          <h1 id="current-location">Copenhagen, DK</h1>
-          <ul class="date-time">
-            <li id="months-date">Octuber 03</li>
-            <li id="time">Tuesday 16:00</li>
-          </ul>
-          <form id="search-form" class="mb-3">
-            <div class="row">
-              <div class="col-9">
-                <input
-                  type="search"
-                  placeholder="Type a city.."
-                  class="form-control"
-                  id="city-input"
-                  autocomplete="off"
-                />
+      <div class="wrapper">
+        <div class="weather-app">
+          <div class="row">
+            <div class="col-4">
+              <img src="" alt="Clear" id="icon" />
+              <div class="d-flex weather-temperature">
+                <strong id="current-temperature">23°</strong>
+                <span class="unints">C°| F°</span>
               </div>
-              <div class="col-3">
-                <input
-                  type="submit"
-                  value="Search"
-                  class="btn btn-primary w-100"
-                  id="search-button"
-                />
-              </div>
+              <ul class="description-temperature">
+                <li class="weather-description">Clear sky</li>
+                <li class="max-temperature">↑26°</li>
+                <li class="min-temperature">↓15°</li>
+              </ul>
             </div>
-          </form>
-        </div>
-        <br />
-        <br />
-        <div class="row weather-conditions">
-          <div class="col-2 uv">UV index Low</div>
-          <div class="col-2 humidity">Humidity 51%</div>
-          <div class="col-2 wind">Wind 4 m/s</div>
-          <div class="col-2 air-quality">Air-quality 30 Good</div>
-        </div>
-        <br />
-        <br />
-        <div class="row forecast-week">
-        <div class="col-2 day-weather">
-          <div class="forecast-day">Sun</div>
-          <div class="forecast-icon">🌤</div>
-          <div class="row">
-            <div class="col-6 lowest-temparature">14°</div>
-            <div class="col-6 highest-temperature">18°</div>
+            <div class="col-8">
+              <h1 id="current-location">Copenhagen, DK</h1>
+              <ul class="date-time">
+                <li id="months-date">Octuber 03</li>
+                <li id="time">Tuesday 16:00</li>
+              </ul>
+              <form id="search-form" class="mb-3">
+                <div class="row">
+                  <div class="col-9">
+                    <input
+                      type="search"
+                      placeholder="Type a city.."
+                      class="form-control"
+                      id="city-input"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="col-3">
+                    <input
+                      type="submit"
+                      value="Search"
+                      class="btn btn-primary w-100"
+                      id="search-button"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <br />
+            <br />
+            <div class="row weather-conditions">
+              <div class="col-2 uv">UV index Low</div>
+              <div class="col-2 humidity">Humidity 51%</div>
+              <div class="col-2 wind">Wind 4 m/s</div>
+              <div class="col-2 air-quality">Air quality</div>
+            </div>
+            <br />
+            <br />
           </div>
-          <div class="sun-hours">☀️1.9 h</div>
-          <div class="rain">💧3.2 mm</div>
-        </div>
-        <div class="col-2 day-weather">
-          <div class="forecast-day">Mon</div>
-          <div class="forecast-icon">🌤</div>
-          <div class="row">
-            <div class="col-6 lowest-temparature">10°</div>
-            <div class="col-6 highest-temperature">20°</div>
-          </div>
-          <div class="sun-hours">🌥5.9 h</div>
-          <div class="rain">💧2.2 mm</div>
-        </div>
-        <div class="col-2 day-weather">
-          <div class="forecast-day">Tue</div>
-          <div class="forecast-icon">🌧</div>
-          <div class="row">
-            <div class="col-6 lowest-temparature">12°</div>
-            <div class="col-6 highest-temperature">24°</div>
-          </div>
-          <div class="sun-hours">☀️8.9 h</div>
-          <div class="rain">💧5.2 mm</div>
-        </div>
-        <div class="col-2 day-weather">
-          <div class="forecast-day">Wen</div>
-          <div class="forecast-icon">🌤</div>
-          <div class="row">
-            <div class="col-6 lowest-temparature">13°</div>
-            <div class="col-6 highest-temperature">21°</div>
-          </div>
-          <div class="sun-hours">☀️4.9 h</div>
-          <div class="rain">💧2.8 mm</div>
-        </div>
-        <div class="col-2 day-weather">
-          <div class="forecast-day">Thu</div>
-          <div class="forecast-icon">☁️</div>
-          <div class="row">
-            <div class="col-6 lowest-temparature">11°</div>
-            <div class="col-6 highest-temperature">19°</div>
-          </div>
-          <div class="sun-hours">☀️3.9 h</div>
-          <div class="rain">💧3.2 mm</div>
         </div>
       </div>
-    </div>
-    </div>
     </div>
     <script src="src/app.js"></script>
   </body>
