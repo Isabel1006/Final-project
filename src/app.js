@@ -19,6 +19,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+
   return `${day} ${hours}:${minutes}`;
 }
 
@@ -31,12 +32,17 @@ function formatDay(timestamp) {
 }
 
 function cityTemperature(response) {
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
   let dayTime = document.querySelector("#time");
   dayTime.innerHTML = formatDate(response.data.dt * 1000);
 
-  let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = `${temperature}`;
+  currentTemperature.innerHTML = Math.round(response.data.main.temp);
 
   let city = response.data.name;
   let currentCity = document.querySelector("#current-location");
@@ -50,9 +56,17 @@ function cityTemperature(response) {
   let maxTemperature = document.querySelector(".max-temperature");
   maxTemperature.innerHTML = `↑${highestTemperature}`;
 
-  let thermalSensation = Math.round(response.data.main.feels_like);
-  let feelLike = document.querySelector(".feels-like");
-  feelLike.innerHTML = `Feels like ${thermalSensation}`;
+  let weatherDescription = document.querySelector(".weather-description");
+  weatherDescription.innerHTML = response.data.weather[0].description;
+
+  let humidity = document.querySelector(".humidity");
+  humidity.innerHTML = `Humidity ${response.data.main.humidity}%`;
+
+  let wind = document.querySelector(".wind");
+  wind.innerHTML = `Wind  ${Math.round(response.data.wind.speed)} m/h`;
+
+  let uvIndex = document.querySelector(".uv");
+  uvIndex.innerHTML = `UV index ${response.data.main.uvi}`;
 }
 function searchfunction(city) {
   let apiKey = "34ae1065362d42545661451bda2b8a1f";
