@@ -4,19 +4,59 @@
 }
 
 .weather-app {
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #dadde1;
   border-radius: 5px;
   background-image: linear-gradient(rgb(145, 163, 183), rgb(221, 227, 229));
 }
-li {
+
+.date-time {
+  font-weight: 200;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 10px;
 }
 #current-temperature {
   color: rgb(33, 33, 33);
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
+}
+#search-button {
+  color: rgb(23, 37, 43);
+  background-color: rgb(175, 198, 219);
+  box-shadow: 0 0.125rem 0.25rem rgba(16, 21, 25, 0.888);
+  border: none;
+}
+.description-temperature {
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+  list-style: none;
+  display: inline-block;
+  font-size: small;
+}
+.weather-conditions {
+  position: relative;
+  left: 50px;
+  bottom: 1px;
+  margin-top: 40px;
+  padding-bottom: 30px;
+}
+.uv,
+.humidity,
+.wind,
+.air-quality {
+  align-items: center;
+  background-color: rgb(190, 223, 246);
+  border-radius: 50%;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: small;
+  font-weight: 200;
+}
+li:first-letter {
+  text-transform: capitalize;
 }
