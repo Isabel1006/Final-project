@@ -65,9 +65,6 @@ function cityTemperature(response) {
   let wind = document.querySelector(".wind");
   wind.innerHTML = `Wind  ${Math.round(response.data.wind.speed)} m/h`;
 
-  let uvIndex = document.querySelector(".uv");
-  uvIndex.innerHTML = `UV index ${response.data.main.uvi}`;
-
   celsiusTemperature = response.data.main.temp;
 }
 function searchFunction(city) {
@@ -84,12 +81,16 @@ function handleSubmit(event) {
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
 }
 function displaycelsiusTemperature(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temperature");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   currentTemperature.innerHTML = Math.round(celsiusTemperature);
 }
 let celsiusTemperature = null;
@@ -102,3 +103,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displaycelsiusTemperature);
+
+searchFunction("Copenhagen");
