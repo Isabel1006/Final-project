@@ -60,3 +60,11 @@
 li:first-letter {
   text-transform: capitalize;
 }
+.weather-temperature .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.footer {
+  text-decoration: none;
+}
