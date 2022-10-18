@@ -67,8 +67,10 @@ function cityTemperature(response) {
 
   let uvIndex = document.querySelector(".uv");
   uvIndex.innerHTML = `UV index ${response.data.main.uvi}`;
+
+  celsiusTemperature = response.data.main.temp;
 }
-function searchfunction(city) {
+function searchFunction(city) {
   let apiKey = "34ae1065362d42545661451bda2b8a1f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(cityTemperature);
@@ -76,7 +78,27 @@ function searchfunction(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input");
-  searchfunction(city.value);
+  searchFunction(city.value);
 }
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+function displaycelsiusTemperature(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displaycelsiusTemperature);
