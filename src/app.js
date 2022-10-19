@@ -36,11 +36,9 @@ function formatDate(timestamp) {
     "November",
     "December",
   ];
-  let year = date.getFullYear();
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
-  let nowDate = document.querySelector("#months-date");
-  nowDate.innerHTML = `${month} ${dateNumber}, ${year}`;
+  return `${month} ${dateNumber}, ${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -99,7 +97,6 @@ function cityTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-
   let dayTime = document.querySelector("#time");
   dayTime.innerHTML = formatDate(response.data.dt * 1000);
 
