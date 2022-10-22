@@ -21,6 +21,10 @@
   line-height: 1;
   font-weight: 400;
 }
+#search-form {
+  display: block;
+  margin-top: 40px;
+}
 #search-button {
   color: rgb(23, 37, 43);
   background-color: rgb(175, 198, 219);
