@@ -1,3 +1,4 @@
+// function display current date and time//
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -48,7 +49,7 @@ function formatDay(timestamp) {
 
   return days[day];
 }
-
+// function display forecast//
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
@@ -90,7 +91,7 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-
+// function display current weather condition//
 function cityTemperature(response) {
   let icon = document.querySelector("#icon");
   icon.setAttribute(
@@ -124,9 +125,11 @@ function cityTemperature(response) {
   let wind = document.querySelector(".wind");
   wind.innerHTML = `Wind  ${Math.round(response.data.wind.speed)} m/h`;
 
-  celsiusTemperature = response.data.main.temp;
   getForecast(response.data.coord);
+  getUVIndex(response.data.coord);
+  getAirPollution(response.data.coord);
 }
+// search engine //
 function searchFunction(city) {
   let apiKey = "34ae1065362d42545661451bda2b8a1f";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -137,7 +140,49 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input");
   searchFunction(city.value);
 }
+//function display UV//
+function getUVIndex(coordinates) {
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  axios.get(apiURL).then(displayUV);
+}
+function displayUV(response) {
+  let uvi = Math.round(response.data.current.uvi);
+  let UvElement = document.querySelector(".uv");
+  UvElement.innerHTML = `UV Index ${uvi}/11`;
+}
+//function air quality//
+function getAirPollution(coordinates) {
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
+  let apiURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  axios.get(apiURL).then(displayAirPollution);
+}
+function displayAirPollution(response) {
+  let airElement = document.querySelector(".air");
+  let airIndex = Math.round(response.data.list[0].main.aqi);
+  airElement.innerHTML = airIndex;
+  let airDescription = [
+    "Very good",
+    "Good",
+    "Fair",
+    "Moderate",
+    "Poor",
+    "Very poor",
+  ];
 
+  let airDescriptionElement = document.querySelector(".air");
+  airDescriptionElement.innerHTML = `${airIndex}-${airDescription[airIndex]}`;
+}
+// function current location//
+function searchLocation(position) {
+  let apiKey = "34ae1065362d42545661451bda2b8a1f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(cityTemperature);
+}
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
