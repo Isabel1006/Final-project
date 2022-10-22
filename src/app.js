@@ -180,9 +180,9 @@ function searchLocation(position) {
 
   axios.get(apiUrl).then(cityTemperature);
 }
-function getCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
+
+navigator.geolocation.getCurrentPosition(searchLocation);
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 

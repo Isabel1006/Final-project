@@ -51,6 +51,7 @@
 .humidity,
 .wind,
 .air {
+  text-align: center;
   align-items: center;
   background-color: rgb(190, 223, 246);
   border-radius: 50%;
@@ -90,4 +91,6 @@ li:first-letter {
 }
 .footer {
   text-decoration: none;
+  font-size: 10px;
+  font-weight: 200;
 }
